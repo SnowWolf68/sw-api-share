@@ -1,0 +1,11 @@
+
+l
+java:S1192"JDefine a constant instead of duplicating this literal "accessKey" 3 times.(Ïá‡¸ıÿÿÿÿ8í¸÷1
+œ	java:S116"ZRename this field "TEST_ACCESS_KEY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«¸ğİ8«âŒ÷1J$1bb4d2c0-4e6b-42d9-824a-bd2f41b933cf
+œ	java:S116"ZRename this field "TEST_SECRET_KEY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªĞøÅ8«âŒ÷1J$1a67f913-bbcb-4db3-aee1-2813131a6fe4
+d
+java:S1170"!Make this final field static too.(«¸ğİ8¬âŒ÷1J$99837d9e-54bc-4362-8a99-7bbae19b6814
+d
+java:S1170"!Make this final field static too.(ªĞøÅ8¬âŒ÷1J$15b1e8ec-eed3-4fcd-b0af-a2acca688d27
+y
+java:S4144!"\Update this method so that its implementation is not identical to "getNameByGet" on line 22.(ÛËÖ8”í¸÷1
