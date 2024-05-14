@@ -1,9 +1,8 @@
 package com.snwolf.controller;
 
-import cn.hutool.crypto.digest.DigestAlgorithm;
-import cn.hutool.crypto.digest.Digester;
 import com.snwolf.po.User;
-import com.snwolf.util.SignUtil;
+import com.snwolf.service.IUserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/name")
 @Slf4j
+@RequiredArgsConstructor
 public class NameController {
 
-    private final String TEST_ACCESS_KEY = "testAccessKey";
-
-    private final String TEST_SECRET_KEY = "testSecretKey";
+    private final IUserService userService;
 
     @GetMapping()
     public String getNameByGet(String name, HttpServletRequest request){
@@ -53,6 +51,13 @@ public class NameController {
 
     private boolean chechAuth(String accessKey, String secretKey) {
         log.info("请求中的accessKey: {}, secretKey: {}", accessKey, secretKey);
-        return TEST_ACCESS_KEY.equals(accessKey) && SignUtil.getSignWithSecretKey(TEST_SECRET_KEY).equals(secretKey);
+        com.snwolf.domain.entity.User user = userService.lambdaQuery()
+                .eq(com.snwolf.domain.entity.User::getAccessKey, accessKey)
+                .eq(com.snwolf.domain.entity.User::getSecretKey, secretKey)
+                .one();
+        if(user == null){
+            return false;
+        }
+        return true;
     }
 }

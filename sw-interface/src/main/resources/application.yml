@@ -6,3 +6,12 @@ sw:
   client:
     access-key: testAccessKey
     secret-key: testSecretKey
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/api-share?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1111
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
