@@ -8,4 +8,6 @@ import com.snwolf.api.exception.ParamErrorException;
 
 public interface IInterfaceInfoService extends IService<InterfaceInfo> {
     boolean online(IdDTO idDTO) throws ParamErrorException, InterfaceStatusException;
+
+    boolean offline(IdDTO idDTO) throws ParamErrorException, InterfaceStatusException;
 }

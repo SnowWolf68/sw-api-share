@@ -25,4 +25,11 @@ public class InterfaceInfoController {
         boolean result = interfaceInfoService.online(idDTO);
         return Result.success(result);
     }
+
+    @CheckRole(role = "admin")
+    @PostMapping("/offline")
+    public Result<Boolean> offlineInterface(@RequestBody IdDTO idDTO) throws ParamErrorException, InterfaceStatusException {
+        boolean result = interfaceInfoService.offline(idDTO);
+        return Result.success(result);
+    }
 }
