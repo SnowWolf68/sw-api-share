@@ -1,8 +1,10 @@
 package com.snwolf.api.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.snwolf.api.annotation.CheckRole;
 import com.snwolf.api.context.BaseContext;
 import com.snwolf.api.domain.dto.IdDTO;
+import com.snwolf.api.domain.dto.InterfaceInfoDTO;
 import com.snwolf.api.domain.dto.InterfaceInvokeDTO;
 import com.snwolf.api.domain.entity.InterfaceInfo;
 import com.snwolf.api.domain.entity.User;
@@ -39,5 +41,12 @@ public class InterfaceInfoController {
     public Result<Object> invokeInterface(@RequestBody InterfaceInvokeDTO interfaceInvokeDTO) throws ParamErrorException, InterfaceStatusException {
         Object result = interfaceInfoService.invokeInterface(interfaceInvokeDTO);
         return Result.success(result);
+    }
+
+    @CheckRole(role = "admin")
+    @PostMapping("/add")
+    public Result<Long> addInterface(@RequestBody InterfaceInfoDTO interfaceInfoDTO) throws ParamErrorException {
+        Long id = interfaceInfoService.addInterface(interfaceInfoDTO);
+        return Result.success(id);
     }
 }

@@ -1,10 +1,12 @@
 package com.snwolf.api.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.snwolf.api.context.BaseContext;
 import com.snwolf.api.domain.dto.IdDTO;
+import com.snwolf.api.domain.dto.InterfaceInfoDTO;
 import com.snwolf.api.domain.dto.InterfaceInvokeDTO;
 import com.snwolf.api.domain.entity.InterfaceInfo;
 import com.snwolf.api.domain.entity.User;
@@ -92,6 +94,16 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
         com.snwolf.api.client.TestClient testClient = new com.snwolf.api.client.TestClient(accessKey, secretKey);
         com.snwolf.po.User user1 = JSONUtil.toBean(interfaceInvokeDTO.getUserRequestParam(), com.snwolf.po.User.class);
         return testClient.getNameByPostWithBody(user1);
+    }
+
+    @Override
+    public Long addInterface(InterfaceInfoDTO interfaceInfoDTO) throws ParamErrorException {
+        if(interfaceInfoDTO == null){
+            throw new ParamErrorException("接口信息不能为空");
+        }
+        InterfaceInfo interfaceInfo = BeanUtil.copyProperties(interfaceInfoDTO, InterfaceInfo.class);
+        save(interfaceInfo);
+        return interfaceInfo.getId();
     }
 
     private boolean checkInterfaceStatus() throws InterfaceStatusException {
