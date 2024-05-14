@@ -1,7 +1,7 @@
 package com.snwolf.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.snwolf.api.domain.UserRegisterDTO;
+import com.snwolf.api.domain.dto.UserRegisterDTO;
 import com.snwolf.api.domain.dto.UserLoginDTO;
 import com.snwolf.api.domain.entity.User;
 import com.snwolf.api.domain.vo.UserLoginVO;

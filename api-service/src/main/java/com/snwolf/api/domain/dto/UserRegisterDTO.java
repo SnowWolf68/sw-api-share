@@ -1,4 +1,4 @@
-package com.snwolf.api.domain;
+package com.snwolf.api.domain.dto;
 
 import lombok.Data;
 

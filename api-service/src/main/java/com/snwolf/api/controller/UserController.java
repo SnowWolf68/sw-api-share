@@ -1,7 +1,7 @@
 package com.snwolf.api.controller;
 
 import com.snwolf.api.annotation.CheckRole;
-import com.snwolf.api.domain.UserRegisterDTO;
+import com.snwolf.api.domain.dto.UserRegisterDTO;
 import com.snwolf.api.domain.dto.UserLoginDTO;
 import com.snwolf.api.domain.entity.User;
 import com.snwolf.api.domain.vo.UserLoginVO;
