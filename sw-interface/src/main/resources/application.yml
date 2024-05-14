@@ -4,8 +4,8 @@ server:
     context-path: /api
 sw:
   client:
-    access-key: testAccessKey
-    secret-key: testSecretKey
+    access-key: 4d78cfe5be831a05a7426365eb5841e2
+    secret-key: 0a1b05bb32d8b2121ae8e0b643f6b8d6
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

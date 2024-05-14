@@ -22,6 +22,8 @@ public class User {
     private String userAvatar;
     private Integer gender;
     private String userRole;
+    private String accessKey;
+    private String secretKey;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
     private Boolean isDelete;

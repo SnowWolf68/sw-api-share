@@ -5,6 +5,7 @@ import com.snwolf.api.domain.dto.UserRegisterDTO;
 import com.snwolf.api.domain.dto.UserLoginDTO;
 import com.snwolf.api.domain.entity.User;
 import com.snwolf.api.domain.vo.UserLoginVO;
+import com.snwolf.api.domain.vo.UserRegisterVO;
 import com.snwolf.api.result.Result;
 import com.snwolf.api.service.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +26,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public Result<Long> register(@RequestBody UserRegisterDTO userRegisterDTO){
-        Long userId = userService.register(userRegisterDTO);
-        return Result.success(userId);
+    public Result<UserRegisterVO> register(@RequestBody UserRegisterDTO userRegisterDTO){
+        UserRegisterVO userRegisterVO = userService.register(userRegisterDTO);
+        return Result.success(userRegisterVO);
     }
 
     @GetMapping("/queryAllUser")
