@@ -1,6 +1,7 @@
 package com.snwolf.client;
 
 import cn.hutool.core.util.StrUtil;
+import com.snwolf.po.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -54,6 +55,18 @@ class TestClientTest {
             log.info(respStr);
         }
         respStr = testClient.getNameByPost("jack");
+        if(StrUtil.isBlank(respStr)){
+            log.error("出错了");
+        }else{
+            log.info(respStr);
+        }
+    }
+
+    @Test
+    void testInterfaceWithSDK2(){
+        User user = new User();
+        user.setName("lucy");
+        String respStr = testClient.getNameByPostWithBody(user);
         if(StrUtil.isBlank(respStr)){
             log.error("出错了");
         }else{

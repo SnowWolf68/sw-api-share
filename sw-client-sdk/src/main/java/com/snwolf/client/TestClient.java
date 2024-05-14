@@ -5,6 +5,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+import com.snwolf.po.User;
 import com.snwolf.util.SignUtil;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -65,6 +66,21 @@ public class TestClient {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
         String jsonStr = JSONUtil.toJsonStr(paramMap);
+        HttpResponse response = HttpRequest.post(urlPrifix + "/body")
+                .addHeaders(setHeaders())
+                .body(jsonStr)
+                .execute();
+        log.info("response code: {}", response.getStatus());
+        if(response.isOk()){
+            return response.body();
+        }else {
+            log.error("状态码不正常, 状态码: {}", response.getStatus());
+            return "";
+        }
+    }
+
+    public String getNameByPostWithBody(User user){
+        String jsonStr = JSONUtil.toJsonStr(user);
         HttpResponse response = HttpRequest.post(urlPrifix + "/body")
                 .addHeaders(setHeaders())
                 .body(jsonStr)
