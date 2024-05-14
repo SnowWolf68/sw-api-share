@@ -9,6 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
+        <module>sw-client-sdk</module>
+        <module>sw-interface</module>
         <module>api-service</module>
     </modules>
 
