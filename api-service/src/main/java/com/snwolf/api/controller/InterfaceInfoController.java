@@ -1,16 +1,18 @@
 package com.snwolf.api.controller;
 
 import com.snwolf.api.annotation.CheckRole;
+import com.snwolf.api.context.BaseContext;
 import com.snwolf.api.domain.dto.IdDTO;
+import com.snwolf.api.domain.dto.InterfaceInvokeDTO;
+import com.snwolf.api.domain.entity.InterfaceInfo;
+import com.snwolf.api.domain.entity.User;
 import com.snwolf.api.exception.InterfaceStatusException;
 import com.snwolf.api.exception.ParamErrorException;
 import com.snwolf.api.result.Result;
 import com.snwolf.api.service.IInterfaceInfoService;
+import com.snwolf.api.service.IUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/interfaceInfo")
@@ -30,6 +32,12 @@ public class InterfaceInfoController {
     @PostMapping("/offline")
     public Result<Boolean> offlineInterface(@RequestBody IdDTO idDTO) throws ParamErrorException, InterfaceStatusException {
         boolean result = interfaceInfoService.offline(idDTO);
+        return Result.success(result);
+    }
+
+    @PostMapping("/invoke")
+    public Result<Object> invokeInterface(@RequestBody InterfaceInvokeDTO interfaceInvokeDTO) throws ParamErrorException, InterfaceStatusException {
+        Object result = interfaceInfoService.invokeInterface(interfaceInvokeDTO);
         return Result.success(result);
     }
 }
