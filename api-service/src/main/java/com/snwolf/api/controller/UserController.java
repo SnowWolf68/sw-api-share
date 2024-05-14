@@ -1,5 +1,6 @@
 package com.snwolf.api.controller;
 
+import com.snwolf.api.annotation.CheckRole;
 import com.snwolf.api.domain.UserRegisterDTO;
 import com.snwolf.api.domain.dto.UserLoginDTO;
 import com.snwolf.api.domain.entity.User;
@@ -30,6 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/queryAllUser")
+    @CheckRole(role = "admin")
     public Result<List<User>> queryAllUser(){
         List<User> userList = userService.query().list();
         return Result.success(userList);
