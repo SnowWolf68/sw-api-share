@@ -9,8 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>sw-interface</module>
-        <module>sw-client-sdk</module>
+        <module>api-service</module>
     </modules>
 
     <parent>
@@ -31,6 +30,7 @@
         <mybatis-plus.version>3.4.3</mybatis-plus.version>
         <hutool.version>5.8.11</hutool.version>
         <mysql.version>8.0.23</mysql.version>
+        <jaxb-api>2.3.1</jaxb-api>
     </properties>
 
     <!-- 对依赖包进行管理 -->
@@ -69,6 +69,12 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+            <!-- jaxb-api 管理, 生成jwt令牌的时候需要用到 -->
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb-api}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
