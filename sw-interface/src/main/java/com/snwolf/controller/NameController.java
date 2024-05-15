@@ -1,5 +1,6 @@
 package com.snwolf.controller;
 
+import com.snwolf.domain.dto.AuthDTO;
 import com.snwolf.po.User;
 import com.snwolf.service.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +48,13 @@ public class NameController {
             return "";
         }
         return user.getName();
+    }
+
+    @PostMapping("/checkAuth")
+    private boolean chechAuth(@RequestBody AuthDTO authDTO) {
+        String accessKey = authDTO.getAccessKey();
+        String secretKey = authDTO.getSecretKey();
+        return chechAuth(accessKey, secretKey);
     }
 
     private boolean chechAuth(String accessKey, String secretKey) {

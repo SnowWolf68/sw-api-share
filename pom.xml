@@ -12,6 +12,7 @@
         <module>sw-client-sdk</module>
         <module>sw-interface</module>
         <module>api-service</module>
+        <module>gateway-service</module>
     </modules>
 
     <parent>

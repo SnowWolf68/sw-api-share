@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: sw-interface
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/**
