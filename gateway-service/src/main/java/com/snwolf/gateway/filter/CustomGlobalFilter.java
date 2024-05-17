@@ -1,8 +1,8 @@
 package com.snwolf.gateway.filter;
 
-import com.snwolf.domain.dto.URLKeyDTO;
+import com.snwolf.common.domain.dto.URLKeyDTO;
 import com.snwolf.gateway.client.InterfaceClient;
-import com.snwolf.gateway.domain.dto.AuthDTO;
+import com.snwolf.common.domain.dto.AuthDTO;
 import com.snwolf.service.UserInterfaceInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

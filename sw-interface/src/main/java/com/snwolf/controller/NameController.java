@@ -1,6 +1,6 @@
 package com.snwolf.controller;
 
-import com.snwolf.domain.dto.AuthDTO;
+import com.snwolf.common.domain.dto.AuthDTO;
 import com.snwolf.po.User;
 import com.snwolf.service.IUserService;
 import lombok.RequiredArgsConstructor;

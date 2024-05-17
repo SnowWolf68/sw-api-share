@@ -1,4 +1,4 @@
-package com.snwolf.domain.dto;
+package com.snwolf.common.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,7 @@
 package com.snwolf.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.snwolf.domain.dto.URLKeyDTO;
+import com.snwolf.common.domain.dto.URLKeyDTO;
 import com.snwolf.domain.entity.InterfaceInfo;
 import com.snwolf.domain.entity.User;
 import com.snwolf.domain.entity.UserInterfaceInfo;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@DubboService
-public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoMapper, UserInterfaceInfo> implements UserInterfaceInfoService, IUserInterfaceInfoService{
+@DubboService(interfaceClass = UserInterfaceInfoService.class)
+public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoMapper, UserInterfaceInfo> implements IUserInterfaceInfoService{
 
     private final IInterfaceInfoService interfaceInfoService;
 

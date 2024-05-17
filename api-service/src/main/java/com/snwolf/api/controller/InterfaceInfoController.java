@@ -1,18 +1,13 @@
 package com.snwolf.api.controller;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.snwolf.api.annotation.CheckRole;
-import com.snwolf.api.context.BaseContext;
 import com.snwolf.api.domain.dto.IdDTO;
 import com.snwolf.api.domain.dto.InterfaceInfoDTO;
 import com.snwolf.api.domain.dto.InterfaceInvokeDTO;
-import com.snwolf.api.domain.entity.InterfaceInfo;
-import com.snwolf.api.domain.entity.User;
 import com.snwolf.api.exception.InterfaceStatusException;
 import com.snwolf.api.exception.ParamErrorException;
 import com.snwolf.api.result.Result;
 import com.snwolf.api.service.IInterfaceInfoService;
-import com.snwolf.api.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

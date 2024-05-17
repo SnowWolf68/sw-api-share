@@ -1,4 +1,4 @@
-package com.snwolf.gateway.result;
+package com.snwolf.common.result;
 
 import lombok.Data;
 

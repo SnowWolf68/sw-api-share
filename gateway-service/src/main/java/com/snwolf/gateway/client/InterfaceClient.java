@@ -1,8 +1,8 @@
 package com.snwolf.gateway.client;
 
-import com.snwolf.domain.dto.URLKeyDTO;
-import com.snwolf.gateway.domain.dto.AuthDTO;
-import com.snwolf.gateway.result.Result;
+import com.snwolf.common.domain.dto.URLKeyDTO;
+import com.snwolf.common.domain.dto.AuthDTO;
+import com.snwolf.common.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
