@@ -5,6 +5,7 @@ import com.snwolf.domain.dto.URLKeyDTO;
 import com.snwolf.domain.entity.InterfaceInfo;
 import com.snwolf.domain.entity.User;
 import com.snwolf.domain.entity.UserInterfaceInfo;
+import com.snwolf.exception.InterfaceInfoException;
 import com.snwolf.mapper.UserInterfaceInfoMapper;
 import com.snwolf.service.IInterfaceInfoService;
 import com.snwolf.service.IUserInterfaceInfoService;
@@ -23,13 +24,16 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
     private final IUserService userService;
 
     @Override
-    public void addCnt(URLKeyDTO urlKeyDTO) {
+    public void addCnt(URLKeyDTO urlKeyDTO) throws InterfaceInfoException {
         String url = urlKeyDTO.getUrl();
         String accessKey = urlKeyDTO.getAccessKey();
         String secretKey = urlKeyDTO.getSecretKey();
         InterfaceInfo interfaceInfo = interfaceInfoService.lambdaQuery()
                 .eq(InterfaceInfo::getUrl, url)
                 .one();
+        if(interfaceInfo == null){
+            throw new InterfaceInfoException("接口信息不存在");
+        }
         Long interfaceId = interfaceInfo.getId();
         User user = userService.lambdaQuery()
                 .eq(User::getAccessKey, accessKey)

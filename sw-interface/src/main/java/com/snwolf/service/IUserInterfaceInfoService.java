@@ -3,7 +3,8 @@ package com.snwolf.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.snwolf.domain.dto.URLKeyDTO;
 import com.snwolf.domain.entity.UserInterfaceInfo;
+import com.snwolf.exception.InterfaceInfoException;
 
 public interface IUserInterfaceInfoService extends IService<UserInterfaceInfo> {
-    void addCnt(URLKeyDTO urlKeyDTO);
+    void addCnt(URLKeyDTO urlKeyDTO) throws InterfaceInfoException;
 }
