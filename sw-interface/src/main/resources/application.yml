@@ -23,6 +23,6 @@ dubbo:
     name: sw-interface
   protocol:
     name: tri
-    port: 50052
+    port: -1
   registry:
     address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=nacos

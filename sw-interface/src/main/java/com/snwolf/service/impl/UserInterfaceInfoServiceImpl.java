@@ -10,12 +10,15 @@ import com.snwolf.mapper.UserInterfaceInfoMapper;
 import com.snwolf.service.IInterfaceInfoService;
 import com.snwolf.service.IUserInterfaceInfoService;
 import com.snwolf.service.IUserService;
+import com.snwolf.service.UserInterfaceInfoService;
 import lombok.RequiredArgsConstructor;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoMapper, UserInterfaceInfo> implements IUserInterfaceInfoService {
+@DubboService
+public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoMapper, UserInterfaceInfo> implements UserInterfaceInfoService, IUserInterfaceInfoService{
 
     private final IInterfaceInfoService interfaceInfoService;
 

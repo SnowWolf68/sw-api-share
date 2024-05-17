@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@Component
+//@Component
 public class Task implements CommandLineRunner {
     @DubboReference
     private TestService testService;

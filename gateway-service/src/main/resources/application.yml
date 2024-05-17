@@ -10,7 +10,7 @@ spring:
             - Path=/api/**
 dubbo:
   application:
-    name: dubbo-springboot-demo-consumer
+    name: gateway-service
     logger: slf4j
     qos-port: 33333
   registry:

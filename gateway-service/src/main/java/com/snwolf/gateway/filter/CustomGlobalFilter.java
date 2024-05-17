@@ -1,10 +1,12 @@
 package com.snwolf.gateway.filter;
 
+import com.snwolf.domain.dto.URLKeyDTO;
 import com.snwolf.gateway.client.InterfaceClient;
 import com.snwolf.gateway.domain.dto.AuthDTO;
-import com.snwolf.gateway.domain.dto.URLKeyDTO;
+import com.snwolf.service.UserInterfaceInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.reactivestreams.Publisher;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -33,6 +35,9 @@ import java.util.List;
 public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
     private final InterfaceClient interfaceClient;
+
+    @DubboReference
+    private UserInterfaceInfoService userInterfaceInfoService;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -65,8 +70,10 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
                     .accessKey(accessKey)
                     .secretKey(sign)
                     .build();
-            interfaceClient.addCnt(urlKeyDTO);
-        } catch (MalformedURLException e) {
+//            interfaceClient.addCnt(urlKeyDTO);
+            // 使用Dubbo来进行远程调用
+            userInterfaceInfoService.addCnt(urlKeyDTO);
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         }
 
