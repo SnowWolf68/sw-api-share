@@ -6,8 +6,8 @@ import com.snwolf.api.domain.dto.UserLoginDTO;
 import com.snwolf.api.domain.entity.User;
 import com.snwolf.api.domain.vo.UserLoginVO;
 import com.snwolf.api.domain.vo.UserRegisterVO;
-import com.snwolf.api.result.Result;
 import com.snwolf.api.service.IUserService;
+import com.snwolf.common.result.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

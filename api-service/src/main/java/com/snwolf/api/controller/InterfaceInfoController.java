@@ -6,8 +6,8 @@ import com.snwolf.api.domain.dto.InterfaceInfoDTO;
 import com.snwolf.api.domain.dto.InterfaceInvokeDTO;
 import com.snwolf.api.exception.InterfaceStatusException;
 import com.snwolf.api.exception.ParamErrorException;
-import com.snwolf.api.result.Result;
 import com.snwolf.api.service.IInterfaceInfoService;
+import com.snwolf.common.result.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
