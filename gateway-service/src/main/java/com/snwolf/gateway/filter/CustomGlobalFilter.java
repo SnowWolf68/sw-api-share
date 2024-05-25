@@ -25,6 +25,7 @@ import reactor.core.publisher.Mono;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,28 +54,33 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
             log.error("鉴权失败");
             ServerHttpResponse response = exchange.getResponse();
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
-            response.setComplete();
+            return response.setComplete();
         }
         log.info("鉴权成功");
-        // TODO 调用接口的调用次数 + 1
         URI uri = exchange.getRequest().getURI();
         log.info("uri: {}", uri);
+        URL url;
         try {
-            log.info("url: {}", uri.toURL());
+            url = uri.toURL();
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+        log.info("url: {}", url);
+        URLKeyDTO urlKeyDTO = URLKeyDTO.builder()
+                .url(url.toString())
+                .accessKey(accessKey)
+                .secretKey(sign)
+                .build();
         try {
-            URLKeyDTO urlKeyDTO = URLKeyDTO.builder()
-                    .url(uri.toURL().toString())
-                    .accessKey(accessKey)
-                    .secretKey(sign)
-                    .build();
-//            interfaceClient.addCnt(urlKeyDTO);
+            // interfaceClient.addCnt(urlKeyDTO);
             // 使用Dubbo来进行远程调用
             userInterfaceInfoService.addCnt(urlKeyDTO);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            // 调用出错
+            log.info("调用出错, e:{}", e);
+            ServerHttpResponse response = exchange.getResponse();
+            response.setStatusCode(HttpStatus.BAD_REQUEST);
+            return response.setComplete();
         }
 
         return handleResponse(exchange, chain);

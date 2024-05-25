@@ -6,6 +6,7 @@ import com.snwolf.domain.entity.InterfaceInfo;
 import com.snwolf.domain.entity.User;
 import com.snwolf.domain.entity.UserInterfaceInfo;
 import com.snwolf.exception.InterfaceInfoException;
+import com.snwolf.exception.LeftCntNotEnoughException;
 import com.snwolf.mapper.UserInterfaceInfoMapper;
 import com.snwolf.service.IInterfaceInfoService;
 import com.snwolf.service.IUserInterfaceInfoService;
@@ -27,7 +28,7 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
     private final IUserService userService;
 
     @Override
-    public void addCnt(URLKeyDTO urlKeyDTO) throws InterfaceInfoException {
+    public void addCnt(URLKeyDTO urlKeyDTO) throws Exception{
         String url = urlKeyDTO.getUrl();
         String accessKey = urlKeyDTO.getAccessKey();
         String secretKey = urlKeyDTO.getSecretKey();
@@ -43,6 +44,9 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
                 .eq(User::getSecretKey, secretKey)
                 .one();
         Long userId = user.getId();
-        userInterfaceInfoMapper.deduckCnt(userId, interfaceId);
+        int affectedRows = userInterfaceInfoMapper.deduckCnt(userId, interfaceId);
+        if(affectedRows == 0){
+            throw new LeftCntNotEnoughException("剩余调用次数不足");
+        }
     }
 }
